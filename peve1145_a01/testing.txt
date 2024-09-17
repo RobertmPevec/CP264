@@ -1,0 +1,19 @@
+/**
+ * -------------------------------------
+ * @file  testing.txt
+ * Assignment 1 Sample Test Results
+ * -------------------------------------
+ * @Robert Pevec, 169081145, peve1145@mylaurier.ca
+ *
+ * @version 2023-09-07
+ *
+ * -------------------------------------
+ */
+feet_to_acres(100000.00) -> 2.30
+mow_lawn(10.00, 10.00, 5.00) -> 20
+date_convert(25101962) -> 19621025
+falling_time(50.00) -> 3
+hypotenuse(3.00, 4.00) -> 5.00
+sum_even(100) -> 2550
+sum_partial_harmonic(4) -> 2.083333
+population_growth(10, 10.00, 100) -> 29
