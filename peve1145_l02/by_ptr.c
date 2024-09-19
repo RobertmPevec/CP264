@@ -19,13 +19,16 @@ void fill_values_by_ptr(int *values, int size) {
 }
 
 void fill_squares_by_ptr(int *values, long int *squares, int size) {
-
-    // your code here
-
+for(int i = 0; i < size; i++) {
+    *(values + i) = (long int)(*(values + i)) * (*(values + i));
+    // we are looping through the entire array then calculating and asigning the value to squares in range of size
+    }
 }
 
 void print_by_ptr(int *values, long int *squares, int size) {
-
-    // your code here
-
+    printf("Value  Square\n");
+    printf("-----  ----------\n");
+    for (int i = 0; i < size; i++) {
+        printf("%-5d  %-10ld\n", *(values + i), *(squares + i));
+    }
 }
