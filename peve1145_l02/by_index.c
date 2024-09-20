@@ -3,7 +3,7 @@
  * @file  by_index.c
  * Lab 2 Index Functions Source Code File
  * -------------------------------------
- * @author name, id, email
+ * @Robert Pevec, 169081145, peve1145@mylaurier.ca
  *
  * @version 2024-01-06
  *

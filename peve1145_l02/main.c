@@ -3,7 +3,7 @@
  * @file  main.c
  * Lab 2 Main Source Code File
  * -------------------------------------
- * @author name, id, email
+ * @Robert Pevec, 169081145, peve1145@mylaurier.ca
  *
  * @version 2024-01-06
  *
