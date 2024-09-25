@@ -12,19 +12,28 @@
 #include "functions.h"
 
 int sum_integers(void) {
-    printf("Enter integers, one per line:\n");
-    int number = 0;
-    _Bool input = 1;
-    while (input) {
-        int enter;
-        int result = scanf("%d", &enter);
-        if (result == 1) {
-            number += enter;
-            while (getchar() != '\n');
+    printf("Enter integers, one per line: \n");
+
+    int sum = 0;
+
+    while (1) {
+        int i = 0;
+        char str[100] = {};
+        char ch = getchar();
+
+        while (ch != '\n') {
+            str[i] = ch;
+            i++;
+            ch = getchar();
+        }
+
+        char rChar = str[0];
+        if (isdigit(rChar)) {
+            sum += (rChar - 48);
         } else {
-            input = 0;
-            while (getchar() != '\n');
+            break;
         }
     }
-    return number;
+
+    return sum;
 }
