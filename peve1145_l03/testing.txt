@@ -3,7 +3,7 @@
  * @file  testing.txt
  * Lab 3 Test Results File
  * -------------------------------------
- * @author name, id, email
+ * @Robert Pevec, 169081145, peve1145@mylaurier.ca
  *
  * @version 2024-01-25
  *
@@ -11,12 +11,27 @@
  */
 ------------------
 Task 1
-
-
+Enter integers, one per line:
+1
+2
+3 4
+5
+q
+Sum: 11
 ------------------
 Task 2
-
-
+Enter three comma-separated integers: my,names,robert
+The integers were not properly entered.
+Enter three comma-separated integers: mynameisrobert
+The integers were not properly entered.
+Enter three comma-separated integers: 1,22,13
+Sum: 36
 ---------------
 Task 3
-
+Value for index 0: p
+Not a valid integer. Please try again.
+Value for index 0: 2
+Value for index 1: 4
+Value for index 2: 1
+Value for index 3: 6
+{2, 4, 1, 6}

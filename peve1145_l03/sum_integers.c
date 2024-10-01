@@ -10,30 +10,27 @@
  * -------------------------------------
  */
 #include "functions.h"
+#include <ctype.h>
 
 int sum_integers(void) {
-    printf("Enter integers, one per line: \n");
-
+    printf("Enter integers, one per line:\n");
     int sum = 0;
-
-    while (1) {
+    _Bool trueorfalse = 1;
+    while (trueorfalse) {
         int i = 0;
-        char str[100] = {};
+        char str[100] = { };
         char ch = getchar();
-
         while (ch != '\n') {
             str[i] = ch;
             i++;
             ch = getchar();
         }
-
         char rChar = str[0];
         if (isdigit(rChar)) {
             sum += (rChar - 48);
         } else {
-            break;
+            trueorfalse = 0;
         }
     }
-
     return sum;
 }

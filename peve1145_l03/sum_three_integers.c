@@ -12,10 +12,15 @@
 #include "functions.h"
 
 int sum_three_integers(void) {
-    _Bool value = 1;
-    char input[100];
-    int num1, num2, num3;
-    while (value) {
+    int a, b, c;
+    char buffer[100];
+    while (1) {
         printf("Enter three comma-separated integers: ");
-        
+        fgets(buffer, 100, stdin);
+        if (sscanf(buffer, "%d , %d , %d", &a, &b, &c) == 3) {
+            return a + b + c;
+        } else {
+            printf("The integers were not properly entered.\n");
+        }
     }
+}
