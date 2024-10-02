@@ -58,6 +58,8 @@ int main(int argc, char *argv[])
     printf("Test read_strings\n\n");
     FILE *fp = fopen("data.txt", "r");
     int lines = read_strings(data, fp);
+    // printf("test1");
+    // fflush(stdout);
     fclose(fp);
 
     if (lines == MALLOC_FAILED)

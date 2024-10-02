@@ -23,7 +23,8 @@ strings_array* initialize_strings_array(const int capacity) {
 }
 
 void free_strings_array(strings_array **data) {
-    for (int i = 0; i < (*data)->lines; i++) {
+    // Free the individual strings
+    for(int i = 0; i < (*data)->capacity; i++) {
         free((*data)->strings[i]);
         (*data)->strings[i] = NULL;
     }
