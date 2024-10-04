@@ -13,9 +13,8 @@
 
 void get_movie(movie_struct *source) {
     char title[81];
-    int year;
+    int year, genre;
     char director[81];
-    int genre;
     float rating;
     printf("Title: ");
     scanf(" %80[^\n]", title);

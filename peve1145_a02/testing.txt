@@ -3,9 +3,89 @@
  * @file  sample_tests.txt
  * Assignment 2 sample testing
  * -------------------------------------
- * @author name, id, email
+ * @Robert Pevec, 169081145 peve1145@mylaurier.ca
  *
  * @version 2024-09-13
  *
  * -------------------------------------
  */
+Test: genres_menu()
+
+0: science fiction
+1: fantasy
+2: drama
+3: romance
+4: comedy
+5: zombie
+6: action
+7: historical
+8: horror
+9: war
+10: mystery
+-------------------------------------------
+Test: movie_init(&source, "Dark City", 1998, "Alex Proyas", 0, 7.8)
+
+Test: movie_print(source):
+
+Title:     Dark City
+Year:      1998
+Director:  Alex Proyas
+Genres:    science fiction
+-------------------------------------------
+Test: movie_copy(&source, &target):
+
+-------------------------------------------
+Test: movie_print(&target):
+
+Title:     Dark City
+Year:      1998
+Director:  Alex Proyas
+Genres:    science fiction
+-------------------------------------------
+Test: read_movie(&source, "Zulu|1964|Cy Endfield|7.8|9"):
+
+Test: movie_print(&source):
+
+Title:     Zulu
+Year:      1964
+Director:  Cy Endfield
+Genres:    war
+-------------------------------------------
+Test: result = movie_compare(&source, &source):
+result: 0
+Test: result = movie_compare(&source, &target):
+result: 1
+Test: result = movie_compare(&target, &source):
+result: -1
+-------------------------------------------
+Test: movie_key(&source):
+
+Zulu, 1964
+-------------------------------------------
+Test: get_movie(&source):
+
+Title: This is a test
+Year: 1969
+Director: dave marty
+Genres
+0: science fiction
+1: fantasy
+2: drama
+3: romance
+4: comedy
+5: zombie
+6: action
+7: historical
+8: horror
+9: war
+10: mystery
+Genre: 4
+Rating: 6.9
+
+Title:     This is a test
+Year:      1969
+Director:  dave marty
+Genres:    comedy
+-------------------------------------------
+Test: result = movie_compare(&source, &target):
+result: 1

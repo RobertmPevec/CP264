@@ -83,6 +83,7 @@ void movie_print(const movie_struct *source) {
         printf("%-10s %d\n", "Year:", source->year);
         printf("%-10s %s\n", "Director:", source->director);
         printf("%-10s %s\n", "Genres:", GENRES[source->genre]);
+        printf("%-10z %f\n", "Rating:", source->rating);
     }
 }
 
