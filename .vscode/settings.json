@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "complex": "c",
-        "movie_utilities.h": "c"
+        "movie_utilities.h": "c",
+        "queue": "c"
     }
 }
