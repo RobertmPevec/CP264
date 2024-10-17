@@ -12,83 +12,86 @@
  */
 #include "name_set.h"
 
-// Initializes and returns an empty name_set.
 name_set* name_set_initialize() {
-	name_set *set = malloc(sizeof *set);
-	set->front = NULL;
-	set->rear = NULL;
-	return set;
+    // Allocate memory to the data structure
+    name_set *set = malloc(sizeof *set);
+    // Initialize the header fields.
+    set->front = NULL;
+    set->rear = NULL;
+    return set;
 }
 
-// Frees all of the nodes in the set, including the header node.
-// Returns a count of the number of nodes freed, including the header node.
 int name_set_free(name_set **set) {
-	if (*set == NULL)
-		return 0;
-
-	int count = 0;
-	name_set_node *current = (*set)->front;
-	while (current != NULL) {
-		name_set_node *temp = current;
-		current = current->next;
-		free(temp);
-		count++;
-	}
-
-	free(*set);  // Free the header node itself
-	*set = NULL; // Set the pointer to NULL to indicate it's been freed
-	return count + 1;  // Including the header node
+    int nodes = 0;
+    name_set_node *current = NULL;
+    if (set != NULL && *set != NULL) {
+        current = (*set)->front;
+        while (current != NULL) {
+            name_set_node *next = current->next;
+            free(current);
+            nodes += 1;
+            current = next;
+        }
+        free(*set);
+        *set = NULL;
+    return nodes;
+    }
 }
 
-// Appends a name to a name_set, but only if the name is not already present in the set.
-BOOLEAN name_set_append(name_set *set, const char *first_name,
-		const char *last_name) {
-	if (name_set_contains(set, first_name, last_name)) {
-		return FALSE;  // Name already exists, do not add again
-	}
-
-	name_set_node *new_node = (name_set_node*) malloc(sizeof(name_set_node));
-	if (new_node == NULL) {
-		return FALSE;  // Memory allocation failed
-	}
-
-	// Copy the names and ensure null termination
-	strncpy(new_node->first_name, first_name, NAME_LEN - 1);
-	new_node->first_name[NAME_LEN - 1] = '\0'; // Ensure null termination
-	strncpy(new_node->last_name, last_name, NAME_LEN - 1);
-	new_node->last_name[NAME_LEN - 1] = '\0'; // Ensure null termination
-	new_node->next = NULL;
-
-	if (set->rear != NULL) {
-		set->rear->next = new_node;
-	} else {
-		set->front = new_node;
-	}
-	set->rear = new_node;
-	return TRUE;
+BOOLEAN name_set_append(name_set *set, const char *first_name, const char *last_name) {
+BOOLEAN yesorno = TRUE;
+    if (set == NULL || first_name == NULL || last_name == NULL) {
+        yesorno = FALSE;
+    } 
+    else if (name_set_contains(set, first_name, last_name)) {
+        yesorno = FALSE;
+    }
+    else {
+        name_set_node *new_node = (name_set_node *)malloc(sizeof(name_set_node)); //Needed to allocate memory so function behaves consistantly
+        if (new_node == NULL) {
+            yesorno = FALSE;  // If memory allocation fails, set result to FALSE
+        } else {
+            strncpy(new_node->first_name, first_name, NAME_LEN - 1);
+            new_node->first_name[NAME_LEN - 1] = '\0';
+            strncpy(new_node->last_name, last_name, NAME_LEN - 1);
+            new_node->last_name[NAME_LEN - 1] = '\0';
+            new_node->next = NULL; // Mandatory to set next to NULL
+            if (set->front == NULL) {
+                set->front = new_node;
+                set->rear = new_node;
+            } 
+            else {
+                set->rear->next = new_node;
+                set->rear = new_node;
+            }
+        }
+    }
+    return yesorno;
 }
 
-// Determines if a name is already in a name_set.
-BOOLEAN name_set_contains(const name_set *set, const char *first_name,
-		const char *last_name) {
-	name_set_node *current = set->front;
-	while (current != NULL) {
-		if (strcmp(current->first_name, first_name) == 0
-				&& strcmp(current->last_name, last_name) == 0) {
-			return TRUE;  // Name found
-		}
-		current = current->next;
-	}
-	return FALSE;  // Name not found
+BOOLEAN name_set_contains(const name_set *set, const char *first_name, const char *last_name) {
+   BOOLEAN name_in_set = FALSE;
+    name_set_node *current = NULL;
+    if (set != NULL) {
+        current = (set)->front;
+        while (current != NULL && name_in_set != TRUE) {
+            if (strcmp(current->first_name, first_name) == 0 && strcmp(current->last_name, last_name) == 0) {
+                name_in_set = TRUE;
+            }
+            current = current->next;
+        }
+    }
+    return name_in_set;
 }
 
-// Prints the contents of the linked set of names, one name per line.
 void name_set_print(const name_set *set) {
-	if (set != NULL) {
-		name_set_node *temp = set->front;
-		while (temp != NULL) {
-			printf("%s, %s\n", temp->last_name, temp->first_name);
-			temp = temp->next;
-		}
-	}
+    name_set_node *current = NULL;
+    if (set != NULL) {
+        current = (set)->front;
+        while (current != NULL) {
+            name_set_node *next = current->next;
+            printf("%s, %s\n", current->last_name, current->first_name);
+            current = next;
+        }
+    }
 }
