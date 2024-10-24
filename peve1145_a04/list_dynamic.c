@@ -32,9 +32,15 @@ static bool valid_index(const list_dynamic_struct *source, int i) {
  * @return - index of location of key in list, -1 if key not in list.
  */
 static int list_linear_search(const list_dynamic_struct *source, const data_type *key) {
-
-    // your code here
-
+    int result = -1;
+    int i = 0;
+    while (i < source->count && result != -1) {
+        if (source->items[i] == *key) {
+            result = i;
+        }
+        i += 1;
+    }
+    return result;
 }
 
 // Functions
