@@ -86,6 +86,7 @@ bool queue_remove(queue_dynamic_struct *source, data_type *item) {
     } else {
         *item = source->items[source->front];
         source->front = (source->front + 1) % source->capacity;
+        source->count -= 1;
     }
     return success;
 }
